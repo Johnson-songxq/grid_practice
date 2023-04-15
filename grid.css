@@ -1,0 +1,83 @@
+* {
+    margin: 0;
+    pad: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #303032;
+}
+
+/* why we set grid on main? */
+main {
+    display: grid;
+    /* leave both side 1 fr */
+    grid-template-columns: 1fr repeat(12, minmax(auto, 60px)) 1fr;
+    grid-gap: 40px;
+    padding: 60px 0;
+}
+
+.cards {
+    /* start on column2, ans span 12 columns */
+    grid-column: 2 / span 12;
+    /* for internal grid */
+    display: grid;
+    grid-template-columns: repeat(12, minmax(auto, 60px));
+    grid-gap: 40px;
+}
+
+.card {
+    grid-column-end: span 4;
+    cursor: pointer;
+    transition: transform 0.3s ease 0s;
+    /* transition: all 0.3s ease 0s; */
+}
+
+.card:hover {
+    transform: translateY(-8px);
+}
+
+.card_image-container {
+    width: 100%;
+    /* transition: all 0.5s; */
+}
+
+.card_image-container img {
+    width: 100%;
+}
+
+@media screen and (max-width: 1000px) {
+    .card {
+        grid-column-end: span 6;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    main {
+        /* decrease the width of the space */
+        grid-gap: 20px;
+    }
+
+    .card {
+        grid-column-end: span 12;
+    }
+}
+
+/* just to practice the properties */
+@media screen and (max-width: 600px) {
+    main {
+        /* decrease the width of the space */
+        grid-gap: 10px;
+        /* 6 grid */
+        grid-template-columns: 10px repeat(6, 1fr) 10px;
+    }
+
+    .cards {
+        grid-column: 2 / span 6;
+        grid-template-columns: repeat(6, 1fr);
+    }
+
+    .card {
+        grid-column-end: span 6;
+    }
+}
